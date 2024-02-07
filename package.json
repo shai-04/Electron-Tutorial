@@ -1,5 +1,5 @@
 {
-  "name": "Electron-Tutorial",
+  "name": "electron-tutorial",
   "version": "1.0.0",
   "description": "Repository used for following Ray Viljoen's Udemy course",
   "main": "main.js",
