@@ -27,6 +27,7 @@ function createWindow () {
 
   // Listen for window being closed
   mainWindow.on('closed',  () => {
+      // debugger is basically a keyword for a breakpoint
         mainWindow = null
   })
 }
