@@ -1,0 +1,7 @@
+1) When you need to use a npm package in your electron app, just do a normal "npm i X", where x is the node module.
+
+2) If installing a node module that is incorrectly compiled for Electrons V8 engine than Node's V8 engine, then
+    2.1) Install node module as per usual (npm i -g X), installs globally
+    2.2) Install a node module called electron-rebuild (npm i electron-rebuild)
+    2.3) Run (electron-rebuild X), where X is the problematic V8 engine. The node module will be rebuilt for electron v8 engine
+
