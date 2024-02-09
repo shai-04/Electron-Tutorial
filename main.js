@@ -27,7 +27,7 @@ function createWindow () {
 
   // Listen for window being closed
   mainWindow.on('closed',  () => {
-    mainWindow = null
+        mainWindow = null
   })
 }
 
