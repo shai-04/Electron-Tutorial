@@ -32,8 +32,26 @@ function createWindow () {
   })
 }
 
+// whenever the window is in focus
+app.on('browser-window-focus', e => {
+  console.log('app browser window has been refocused...');
+});
+
+// whenver the window loses focus
+app.on('browser-window-blur', e => {
+  setTimeout(app.quit, 2000);
+});
+
 // Electron `app` is ready
-app.on('ready', createWindow)
+app.on('ready', () => {
+  // displays path to relevant folders
+  console.log(app.getPath('desktop'));
+  console.log(app.getPath('music'));
+  console.log(app.getPath('temp'));
+  console.log(app.getPath('userData')); // store persistent data in this location
+  
+  createWindow();
+})
 
 // Quit when all windows are closed - (Not macOS - Darwin)
 app.on('window-all-closed', () => {
