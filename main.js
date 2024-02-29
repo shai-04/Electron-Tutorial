@@ -1,5 +1,6 @@
 // Modules
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow} = require('electron');
+const { setTimeout } = require('timers');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -21,11 +22,15 @@ function createWindow () {
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: true
-    }
+    },
+    parent: mainWindow,
+    modal: true, //optional,
+    show: false // if making a modal, only show it when needed
   });
 
   // Load index.html into the new BrowserWindow
   mainWindow.loadFile('index.html');
+  secondaryWindow.loadFile('index.html');
 
   // Open DevTools - Remove for PRODUCTION!
   // mainWindow.webContents.openDevTools();
@@ -42,12 +47,11 @@ function createWindow () {
   })
 }
 
-// Electron `app` is ready
-app.on('ready', createWindow)
-
-app.on('browser-window-focus', () => {
+// Show secondary window 3 seconds after main window is shown
+app.on('ready', () => {
+  createWindow();
   setTimeout(() => {
-    secondaryWindow.loadFile('index.html')
+    secondaryWindow.show();
   }, 3000);
 })
 
